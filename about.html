@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="footerSlide.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+    <header>
+        <h1>About Our Feedback System</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="register.html">Register</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+    <main>
+        <img src="r.jpeg" alt="Your opinions matter" style="width:100%; height:auto;" class="fade-in">
+
+        <!-- Slideshow Container -->
+        <div class="slideshow-container">
+            <div class="slideshow-content active-slide active">
+                <h2>Our Purpose</h2>
+                <p>This system allows customers to express their opinions on our products and services.</p>
+            </div>
+            <div class="slideshow-content">
+                <h2>How Feedback is Used</h2>
+                <p>Your feedback will help us enhance our services and customer satisfaction.</p>
+            </div>
+            <div class="slideshow-content">
+                <h2>Mission Statement</h2>
+                <p>We are committed to listening to customer feedback and making improvements.</p>
+            </div>
+            <!-- Navigation buttons -->
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+        </div>
+
+        <!-- Testimonials Section -->
+        <h2>Testimonials</h2>
+        <div class="card-container">
+            <div class="card">
+                <p>"The feedback system is easy to use and has helped us improve our services significantly." - Alex Johnson</p>
+            </div>
+            <div class="card">
+                <p>"I appreciate how responsive the team is to our suggestions." - Maria Garcia</p>
+            </div>
+            <div class="card">
+                <p>"A great platform for sharing our thoughts and getting quick responses." - Liam Smith</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Contact us at <a href="mailto:support@feedbacksystem.com">support@feedbacksystem.com</a></p>
+        <p>© 2024 Customer Feedback System</p>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            // Fade-in image effect
+            $('.fade-in').addClass('visible');
+
+            // Slideshow logic
+            let slideIndex = 0;
+            const slides = document.querySelectorAll('.slideshow-content');
+            const prevButton = document.querySelector('.prev');
+            const nextButton = document.querySelector('.next');
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                    slide.classList.remove('active-slide');
+                });
+                slides[index].classList.add('active');
+                slides[index].classList.add('active-slide');
+            }
+
+            function nextSlide() {
+                slideIndex = (slideIndex + 1) % slides.length;
+                showSlide(slideIndex);
+            }
+
+            function prevSlide() {
+                slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+                showSlide(slideIndex);
+            }
+
+            nextButton.addEventListener('click', nextSlide);
+            prevButton.addEventListener('click', prevSlide);
+
+            // Auto-slide every 5 seconds
+            setInterval(nextSlide, 5000);
+        });
+    </script>
+</body>
+</html>
